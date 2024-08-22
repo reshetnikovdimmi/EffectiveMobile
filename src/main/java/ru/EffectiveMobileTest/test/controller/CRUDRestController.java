@@ -20,9 +20,7 @@ public abstract class CRUDRestController<E, K> {
 
     @GetMapping("/{id}")
     public ResponseEntity<E> findById(@PathVariable K id) {
-
         E object = getService().findById(id);
-
         if (object == null) {
             return ResponseEntity.notFound().build();
         }
