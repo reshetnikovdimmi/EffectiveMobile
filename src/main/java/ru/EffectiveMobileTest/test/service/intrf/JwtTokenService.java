@@ -1,4 +1,4 @@
-package ru.EffectiveMobileTest.test.service;
+package ru.EffectiveMobileTest.test.service.intrf;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

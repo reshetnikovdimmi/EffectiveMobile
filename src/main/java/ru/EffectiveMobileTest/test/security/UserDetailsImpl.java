@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 
 @AllArgsConstructor
 @Getter
-public class ShopDetailsImpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
     private final User user;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,17 +1,17 @@
 package ru.EffectiveMobileTest.test.responses;
 
-import ru.EffectiveMobileTest.test.security.ShopDetailsImpl;
+import ru.EffectiveMobileTest.test.security.UserDetailsImpl;
 
 public class AuthResponse {
 
-    private ShopDetailsImpl shopDetails;
+    private UserDetailsImpl shopDetails;
     private String token;
     public AuthResponse(){
 
     }
 
 
-    public AuthResponse(String token, ShopDetailsImpl shopDetails){
+    public AuthResponse(String token, UserDetailsImpl shopDetails){
         this.token = token;
         this.shopDetails = shopDetails;
     }

@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ru.EffectiveMobileTest.test.service.JwtTokenService;
 import ru.EffectiveMobileTest.test.service.impl.UserDetailsServiceImpl;
+import ru.EffectiveMobileTest.test.service.intrf.JwtTokenService;
 
 import java.io.IOException;
 
