@@ -1,11 +1,11 @@
-package ru.EffectiveMobileTest.test.security;
+package ru.effectivemobile.test.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.EffectiveMobileTest.test.model.User;
+import ru.effectivemobile.test.model.User;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -13,8 +13,9 @@ import java.util.stream.Stream;
 
 @AllArgsConstructor
 @Getter
-public class ShopDetailsImpl implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
     private final User user;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
@@ -26,13 +27,13 @@ public class ShopDetailsImpl implements UserDetails {
 
     @Override
     public String getPassword() {
-
         return this.user.getPassword();
     }
 
-    public Long getUserId(){
+    public Long getUserId() {
         return this.user.getId();
     }
+
     @Override
     public String getUsername() {
         return this.user.getLogin();
