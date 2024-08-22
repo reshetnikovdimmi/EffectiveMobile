@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.effectivemobile.test.dtos.LoginUserDto;
 import ru.effectivemobile.test.dtos.RegisterUserDto;
+import ru.effectivemobile.test.model.LoginResponse;
 import ru.effectivemobile.test.model.User;
 import ru.effectivemobile.test.service.AuthenticationService;
 import ru.effectivemobile.test.service.JwtService;
@@ -35,10 +36,14 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
-        User authenticatedUser = authenticationService.authenticate(loginUserDto);
-        System.out.println(loginUserDto);
-        String jwtToken = jwtService.generateToken((UserDetails) authenticatedUser);
 
+        System.out.println(loginUserDto.getEmail());
+
+        User authenticatedUser = authenticationService.authenticate(loginUserDto);
+
+        System.out.println(loginUserDto.getPassword());
+
+        String jwtToken = jwtService.generateToken((UserDetails) authenticatedUser);
         LoginResponse loginResponse = new LoginResponse();
         loginResponse.setToken(jwtToken);
         loginResponse.setExpiresIn(jwtService.getExpirationTime());

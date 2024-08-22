@@ -1,4 +1,4 @@
-package ru.effectivemobile.test.controllers;
+package ru.effectivemobile.test.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,9 +7,5 @@ import lombok.Setter;
 @Setter
 public class LoginResponse {
     private String token;
-
     private long expiresIn;
-
-
-
 }

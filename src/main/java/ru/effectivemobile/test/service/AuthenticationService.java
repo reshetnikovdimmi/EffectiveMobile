@@ -38,6 +38,7 @@ public class AuthenticationService {
     }
 
     public User authenticate(LoginUserDto input) {
+        System.out.println(input.getPassword());
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         input.getEmail(),
