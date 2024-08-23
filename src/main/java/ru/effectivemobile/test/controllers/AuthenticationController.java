@@ -29,6 +29,7 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody RegisterUserDto registerUserDto) {
+
         User registeredUser = authenticationService.signup(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
@@ -37,11 +38,7 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
 
-        System.out.println(loginUserDto.getEmail());
-
         User authenticatedUser = authenticationService.authenticate(loginUserDto);
-
-        System.out.println(loginUserDto.getPassword());
 
         String jwtToken = jwtService.generateToken((UserDetails) authenticatedUser);
         LoginResponse loginResponse = new LoginResponse();

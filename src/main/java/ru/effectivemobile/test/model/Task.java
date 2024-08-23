@@ -1,11 +1,10 @@
 package ru.effectivemobile.test.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +22,9 @@ public class Task {
     private String priority;
     private Long authorId;
     private Long executorId;
+
+    @OneToMany(targetEntity = Comments.class, cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "taskId",referencedColumnName = "id", insertable = false, updatable = false)
+    private List<Comments> commentsList;
+
 }
