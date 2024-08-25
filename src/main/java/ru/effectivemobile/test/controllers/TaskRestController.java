@@ -1,11 +1,12 @@
 package ru.effectivemobile.test.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.effectivemobile.test.model.Task;
 import ru.effectivemobile.test.service.interf.CRUDService;
 import ru.effectivemobile.test.service.interf.TaskService;
+
+import java.util.List;
 
 
 @RestController
@@ -18,5 +19,11 @@ public class TaskRestController extends CRUDRestController<Task, Long> {
     @Override
     CRUDService<Task, Long> getService() {
         return taskService;
+    }
+
+    @PostMapping("/filt")
+    public List<Task> filt(@RequestBody Task object) {
+
+        return taskService.filt(object);
     }
 }

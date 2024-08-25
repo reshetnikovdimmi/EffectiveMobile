@@ -1,10 +1,7 @@
 package ru.effectivemobile.test.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import ru.effectivemobile.test.model.User;
 import ru.effectivemobile.test.service.interf.CRUDService;
 
 import java.util.List;

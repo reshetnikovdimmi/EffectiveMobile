@@ -1,9 +1,6 @@
 package ru.effectivemobile.test.service.impl;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import ru.effectivemobile.test.model.User;
 import ru.effectivemobile.test.service.interf.CRUDService;
 
 import java.util.ArrayList;

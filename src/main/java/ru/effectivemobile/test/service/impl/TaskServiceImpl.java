@@ -1,14 +1,17 @@
 package ru.effectivemobile.test.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.effectivemobile.test.model.Task;
 import ru.effectivemobile.test.model.User;
 import ru.effectivemobile.test.repositories.TaskRepository;
 import ru.effectivemobile.test.service.interf.TaskService;
+
+import java.util.List;
 
 @Service
 public class TaskServiceImpl extends AbstractCRUDService<Task, Long>  implements TaskService {
@@ -22,19 +25,27 @@ public class TaskServiceImpl extends AbstractCRUDService<Task, Long>  implements
 
     @Override
     public void create(Task object) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
-        object.setAuthorId(currentUser.getId());
+        object.setId(currentUser().getId());
         getRepository().save(object);
     }
-
 
     @Override
     public Task update(Task object) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
-        object.setAuthorId(currentUser.getId());
-        getRepository().save(object);
+        if(object.getAuthorId().equals(currentUser().getId()))
+            getRepository().save(object);
         return object;
     }
+
+    @Override
+    public List <Task> filt(Task obj) {
+        Pageable pageable = PageRequest.of(1, 1);
+        List<Task> tasks = taskRepository.findByAuthorIdLikeOrExecutorIdLike(obj.getPriority(), obj.getStatus(),pageable);
+        return  tasks;
+    }
+
+    private User currentUser() {
+        return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    }
+
+
 }
