@@ -3,16 +3,16 @@ version: "3.8"
 services:
   mysqldb:
     container_name: mysqldb
-    image: mysql
+    image: "mysql:8.3"
     environment:
       MYSQL_USER: springuser
       MYSQL_PASSWORD: ThePassword
       MYSQL_DATABASE: db_example
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - 3303:3306
+      - 3303:3303
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - ./db/:/var/lib/mysql/
     networks:
       springboot-mysql-net:
 
