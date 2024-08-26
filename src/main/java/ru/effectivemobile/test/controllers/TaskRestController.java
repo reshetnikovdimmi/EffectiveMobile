@@ -2,6 +2,7 @@ package ru.effectivemobile.test.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.effectivemobile.test.dtos.FilterDto;
 import ru.effectivemobile.test.model.Task;
 import ru.effectivemobile.test.service.interf.CRUDService;
 import ru.effectivemobile.test.service.interf.TaskService;
@@ -22,7 +23,7 @@ public class TaskRestController extends CRUDRestController<Task, Long> {
     }
 
     @PostMapping("/filt")
-    public List<Task> filt(@RequestBody Task object) {
+    public List<Task> filt(@RequestBody FilterDto object) {
 
         return taskService.filt(object);
     }

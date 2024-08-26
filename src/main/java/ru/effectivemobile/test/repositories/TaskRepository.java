@@ -11,5 +11,5 @@ import java.util.List;
 public interface TaskRepository extends CrudRepository<Task, Long>{
 
 
-    List<Task> findByAuthorIdLikeOrExecutorIdLike(String priority, String status, Pageable pageable);
+    List<Task> findByAuthorIdLikeOrExecutorIdLike(Long priority, Long status, Pageable pageable);
 }
